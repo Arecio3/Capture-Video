@@ -3,8 +3,12 @@ import cv2
 # Trigger camera
 video=cv2.VideoCapture(0)
 
+# Var to rep how many frames are being generated
+frames = 1
+
 # While Loop through Frame array and use imshow to show each frame in the array
 while True:
+    frames = frames + 1
     # Frame obj for showing window which reads video obj
     # check = bool / frame = 3D numpy array which rep img (first frame vid captures)
     # Reads 1st Frame
@@ -19,12 +23,13 @@ while True:
 
     # Created window and showed 1st frame of video
     cv2.imshow("Capturing",gray)
-    # Allows you to press any button and close window
-    key=cv2.waitKey(1000)
+    # Tells the script to wait for 1ms
+    key=cv2.waitKey(1)
     # if you press Q key it stops the loop
     if key == ord('q'):
         break
-    
+
+print(f"{frames} frames generated!")
 # release camera
 video.release()
 # Closes window
